@@ -7,14 +7,22 @@ export default function CheckInPage() {
   const [moods, setMoods] = useState<MoodEntryType[]>([]);
 
   useEffect(() => {
-    const saved = localStorage.getItem("safe_space_moods");
-    if (saved) setMoods(JSON.parse(saved));
+    const loadMoods = async () => {
+      const res = await fetch("/api/moods");
+      const data = await res.json();
+      setMoods(data);
+    };
+    loadMoods();
   }, []);
 
-  function handleSave(data: MoodEntryType) {
-    const updated = [data, ...moods];
-    setMoods(updated);
-    localStorage.setItem("safe_space_moods", JSON.stringify(updated));
+  async function handleSave(data: MoodEntryType) {
+    const res = await fetch("/api/moods", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+    const saved = await res.json();
+    setMoods([saved, ...moods]);
   }
 
   return (

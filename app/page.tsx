@@ -36,7 +36,7 @@ export default function Home() {
         A safe, anonymous place to check in with your feelings.
       </p>
       
-    {/* ✅ Reusable Banner Component */}
+    {/* Banner*/}
       <Banner imageSrc="slides/Banner.jpg" altText="SafeSpace mental health banner" />
 
       <div style={{ marginTop: "30px" }}>

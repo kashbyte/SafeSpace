@@ -13,7 +13,7 @@ export type MoodEntry = {
 };
 
 type Props = {
-  onSaved: (data: MoodEntry) => void; // use MoodEntry type
+  onSaved: (data: MoodEntry) => void;
 };
 
 export default function CheckInForm({ onSaved }: Props) {

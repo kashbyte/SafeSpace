@@ -1,5 +1,3 @@
-
-
 type Post = {
   id: string;
   mood: string;
